@@ -36,3 +36,11 @@ model IdempotencyKey {
   createdAt DateTime @default(now())
   @@unique([userId, key], name: "uq_user_id_key")
 }
+
+model MissionRecord {
+  id          Int   @id @default(autoincrement())
+  day         Int
+  mission     Int
+  score       Int
+  createdAt   DateTime @default(now())
+}

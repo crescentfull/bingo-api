@@ -7,8 +7,8 @@ export class BingoController {
     constructor( private readonly useCase: MissionCompleteUseCase ){}
 
     @Post('complete')
-    completeMission(@Body() body: MissionDto){
-        const score = this.useCase.execute(body);
+    async completeMission(@Body() body: MissionDto){
+        const score = await this.useCase.execute(body);
         return { score };
     }
 }
