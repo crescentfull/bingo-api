@@ -1,10 +1,12 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaClient } from "@prisma/client";
 import { MissionRecordRepository } from "src/domain/interfaces/mission.interface";
+import { PrismaService } from "../database/prisma.service";
 
 @Injectable()
 export class PrismaMissionRecordRepository implements MissionRecordRepository {
-  private prisma = new PrismaClient();
+
+   
+  constructor(private readonly prisma: PrismaService) {}
 
   async save(record: {
     day: number;

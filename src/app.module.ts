@@ -3,10 +3,11 @@ import { BingoController } from './interface/controller/bingo.controller';
 import { MissionCompleteUseCase } from './application/usecases/bingo/mission.complete.usecase';
 import { BingoDomainService } from './domain/service/bingo.domain.service';
 import { PrismaMissionRecordRepository } from './infrastructure/repositories/mission-prisma.repository';
+import { PrismaService } from './infrastructure/database/prisma.service';
 
 @Module({
   controllers: [BingoController],
-  providers: [MissionCompleteUseCase, BingoDomainService,
+  providers: [PrismaService, MissionCompleteUseCase, BingoDomainService,
     { provide: 'MissionRecordRepository', useClass: PrismaMissionRecordRepository },
   ]
 })
