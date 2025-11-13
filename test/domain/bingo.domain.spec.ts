@@ -1,4 +1,4 @@
-import { BingoDomainService } from '../../src/domain/bingo.domain.service';
+import { BingoDomainService } from 'src/domain/service/bingo.domain.service';
 
 describe('BingoDomainService', () => {
   let service: BingoDomainService;
@@ -25,7 +25,7 @@ describe('BingoDomainService', () => {
     expect(score).toBe(2);
   });
 
-  it('모든 보드에서 라인을 완성하면 총 10점이 되어야 함', () => {
+  it('일간 8개, 주간 0개, 월간 2개 총 10점이 되어야 함', () => {
     //given
     const logs = [
       [1, 1],

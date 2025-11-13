@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { BingoController } from './interface/controller/bingo.controller';
+import { MissionCompleteUseCase } from './application/usecases/bingo/mission.complete.usecase';
+import { BingoDomainService } from './domain/service/bingo.domain.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [BingoController],
+  providers: [MissionCompleteUseCase, BingoDomainService]
 })
 export class AppModule {}
