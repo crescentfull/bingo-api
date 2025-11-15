@@ -15,7 +15,7 @@ datasource db {
 
 model BingoBoard {
   id           String   @id @default(uuid())
-  userId       String   @db.Uuid
+  userId       String
   scopeType    String   // "daily" | "weekly" | "monthly"
   scopeKey     String
   checkedMask  BigInt   @default(0)
@@ -28,7 +28,7 @@ model BingoBoard {
 
 model IdempotencyKey {
   id        String   @id @default(uuid())
-  userId    String   @db.Uuid
+  userId    String
   key       String
   scopeType String
   scopeKey  String

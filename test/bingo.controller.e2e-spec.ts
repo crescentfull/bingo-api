@@ -14,7 +14,7 @@
 //         app = moduleFixture.createNestApplication();
 //         await app.init();
 //     });
-    
+
 //     afterAll(async () => {
 //         await app.close();
 //     });
@@ -25,21 +25,21 @@
 //             { day: 1, mission: 2},
 //             { day: 1, mission: 3},
 //         ];
-    
+
 //         const response = await request(app.getHttpServer())
 //             .post('api/missions/complete')
 //             .send({ logs })
 //             .expect(201)
-        
+
 //             expect(response.body.score).toBe(1);
 //     })
 // })
 
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import { AppModule } from '../src/app.module';
+import { Test, TestingModule } from "@nestjs/testing";
+import { INestApplication } from "@nestjs/common";
+import { AppModule } from "../src/app.module";
 
-describe('🎯 BingoController (E2E without supertest)', () => {
+describe("🎯 BingoController (E2E without supertest)", () => {
   let app: INestApplication;
   let server: any;
 
@@ -57,10 +57,10 @@ describe('🎯 BingoController (E2E without supertest)', () => {
     await app.close();
   });
 
-  it('POST /api/missions/complete', async () => {
-    const res = await fetch('http://localhost:3000/api/missions/complete', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+  it("POST /api/missions", async () => {
+    const res = await fetch("http://localhost:3000/api/missions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         logs: [
           { day: 1, mission: 1 },
@@ -72,6 +72,7 @@ describe('🎯 BingoController (E2E without supertest)', () => {
 
     const json = await res.json();
     expect(json.score).toBe(1);
+    expect(json.completedMissions).toBe(3);
+    expect(json.lastMission).toEqual({ day: 1, mission: 3 });
   });
 });
-
